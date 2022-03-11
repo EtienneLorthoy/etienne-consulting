@@ -1,7 +1,7 @@
 import { title } from "assets/jss/material-kit-react.js";
 import { container } from "assets/jss/material-kit-react.js";
 
-const productStyle = {
+const skillsStyle = {
   section: {
     padding: "70px 0",
     textAlign: "center",
@@ -17,18 +17,10 @@ const productStyle = {
   description: {
     color: "#999",
   },
-  imageWWW: {
-    marginTop: "22px",
-    maxWidth: "80px",
-  },
-  imageSaas: {
-    marginTop: "22px",
-    maxWidth: "80px",
-  },
-  imageAnalysis: {
+  imageDefault: {
     marginTop: "22px",
     maxWidth: "80px",
   },
 };
 
-export default productStyle;
+export default skillsStyle;

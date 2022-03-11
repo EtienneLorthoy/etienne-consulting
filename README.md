@@ -1,7 +1,7 @@
 
 <h1 align="center">
   <br>
-   Etienne Lorthoy - Freelancer Website
+   <a href="https://etiennelorthoy.com">Etienne Lorthoy - Freelancer Website</a>
   <br>
 </h1>
 

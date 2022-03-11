@@ -9,7 +9,7 @@ import GridItem from "components/Grid/GridItem.js";
 import CustomTabs from "components/CustomTabs/CustomTabs.js";
 
 import { makeStyles } from "@material-ui/core/styles";
-import styles from "assets/jss/material-kit-react/views/landingPageSections/productStyle.js";
+import styles from "assets/jss/material-kit-react/views/landingPageSections/skillsStyle.js";
 const useStyles = makeStyles(styles);
 
 export default function InfluencesSections() {

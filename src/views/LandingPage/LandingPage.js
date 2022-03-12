@@ -10,7 +10,7 @@ import Footer from "components/Footer/Footer.js";
 import GridContainer from "components/Grid/GridContainer.js";
 import GridItem from "components/Grid/GridItem.js";
 import Parallax from "components/Parallax/Parallax.js";
-
+import Button from "components/CustomButtons/Button.js";
 import HeaderLinks from "components/Header/HeaderLinks.js";
 
 import styles from "assets/jss/material-kit-react/views/landingPage.js";
@@ -61,6 +61,13 @@ export default function LandingPage(props) {
                 specifics/curious ones like VRML or .NET Xbox 360 SDK.
               </h4>
               <br />
+              <Button
+                className={classes.contactButton}
+                color="primary"
+                href="https://www.linkedin.com/in/etienne-lorthoy"
+              >
+                Contact Me
+              </Button>
             </GridItem>
           </GridContainer>
         </div>

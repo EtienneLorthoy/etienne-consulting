@@ -54,11 +54,12 @@ export default function LandingPage(props) {
               <h6>
                 - Freelancer, eternal learner, AI/Robotic/Aerospace enthusiast.
               </h6>
+              <h2>Transform ideas into web reality.</h2>
               <h4>
-                A passionate Software Engineer going through years of experience
-                in building with various technological stacks. From broadly
-                adopted ones like the large .NET ecosystem or Kubernetes to
-                specifics/curious ones like VRML or .NET Xbox 360 SDK.
+                I&apos;m passionate Software Engineer going through years of
+                experience in building with various technological stacks. From
+                broadly adopted ones like the large .NET ecosystem or Kubernetes
+                to specifics/curious ones like VRML or .NET Xbox 360 SDK.
               </h4>
               <br />
               <Button

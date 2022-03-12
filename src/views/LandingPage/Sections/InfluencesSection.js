@@ -12,7 +12,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import styles from "assets/jss/material-kit-react/views/landingPageSections/skillsStyle.js";
 const useStyles = makeStyles(styles);
 
-export default function InfluencesSections() {
+export default function InfluencesSection() {
   const classes = useStyles();
   return (
     <div className={classes.section}>

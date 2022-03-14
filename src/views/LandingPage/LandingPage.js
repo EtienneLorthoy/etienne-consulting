@@ -18,7 +18,7 @@ import styles from "assets/jss/material-kit-react/views/landingPage.js";
 // Sections for this page
 import SkillsSection from "./Sections/SkillsSection.js";
 import TechStackSection from "./Sections/TechStackSection.js";
-// import InfluencesSection from "./Sections/InfluencesSection.js";
+import InfluencesSection from "./Sections/InfluencesSection.js";
 import ContactMeSection from "./Sections/ContactMeSection.js";
 
 const dashboardRoutes = [];
@@ -75,7 +75,7 @@ export default function LandingPage(props) {
       <div className={classNames(classes.main, classes.mainRaised)}>
         <SkillsSection />
         <TechStackSection />
-        {/* <InfluencesSections /> */}
+        <InfluencesSection />
         <ContactMeSection />
       </div>
       <Footer />

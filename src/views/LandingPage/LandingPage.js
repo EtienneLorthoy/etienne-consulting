@@ -25,6 +25,15 @@ const dashboardRoutes = [];
 
 const useStyles = makeStyles(styles);
 
+function scrollIntoMe() {
+  let e = document.getElementById("contactme");
+  e.scrollIntoView({
+    block: "start",
+    behavior: "smooth",
+    inline: "start",
+  });
+}
+
 export default function LandingPage(props) {
   const classes = useStyles();
   const { ...rest } = props;
@@ -64,7 +73,7 @@ export default function LandingPage(props) {
               <Button
                 className={classes.contactButton}
                 color="primary"
-                href="#contactme"
+                onClick={scrollIntoMe}
               >
                 Contact Me
               </Button>

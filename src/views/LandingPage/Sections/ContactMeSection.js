@@ -15,17 +15,17 @@ export default function ContactMeSection() {
   const classes = useStyles();
 
   return (
-    <div className={classes.section}>
+    <div id="contactme" className={classes.section}>
       <div className={classes.container}>
         <GridContainer justify="center">
           <GridItem xs={12} sm={12} md={10}>
             <Card>
               <input type="hidden" name="form-name" value="newsletter" />
               <CardBody className={classes.cardBody}>
-                <h2 className={classes.title}>Get in touch!</h2>
+                <h2 className={classes.title}>Contact me</h2>
                 <h4 className={classes.description}>
                   <b>Got a project, need help or wanna take a coffee? </b>
-                  Let&apos;s get in touch! Contact me via LinkedIn.
+                  Let&apos;s get in touch!
                 </h4>
               </CardBody>
               <CardFooter className={classes.cardFooter}>
@@ -34,14 +34,22 @@ export default function ContactMeSection() {
                   color="primary"
                   href="https://www.linkedin.com/in/etienne-lorthoy"
                 >
-                  Contact Me
+                  LinkedIn
+                </Button>
+                <Button
+                  className={classes.contactButton}
+                  color="primary"
+                  target="_blank"
+                  href="mailto:contact@etiennelorthoy.com"
+                >
+                  Mail
                 </Button>
                 <Button
                   className={classes.contactButton}
                   href="/Resume-EtienneLorthoy2022.pdf"
                   color="primary"
                 >
-                  See my Resume
+                  See my PDF Resume
                 </Button>
               </CardFooter>
             </Card>

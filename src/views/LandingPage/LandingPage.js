@@ -64,7 +64,7 @@ export default function LandingPage(props) {
               <Button
                 className={classes.contactButton}
                 color="primary"
-                href="https://www.linkedin.com/in/etienne-lorthoy"
+                href="#contactme"
               >
                 Contact Me
               </Button>

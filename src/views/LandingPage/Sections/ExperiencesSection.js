@@ -50,7 +50,8 @@ export default function ExperiencesSection() {
                             After a year and a half of work, 50% of the 100+
                             deployments/week were done on microservices.
                             It&apos;s been one of my proudest and most impactful
-                            projects.
+                            projects. Still to this day Officevibe use this
+                            microservices over 90% of the time.
                           </p>
                         </div>
                       ),

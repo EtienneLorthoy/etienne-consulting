@@ -64,7 +64,7 @@ export default function LandingPage(props) {
               <h6>
                 - Freelancer, eternal learner, AI/Robotic/Aerospace enthusiast.
               </h6>
-              <h2>Developing and modernizing your IT infrastructure</h2>
+              <h2>Developing & modernizing your code & IT infrastructure</h2>
               <h4>
                 Helping you build back-ends, data-processing and messaging,
                 moving on-premise to cloud, bringing DevOps/SDLC practices into

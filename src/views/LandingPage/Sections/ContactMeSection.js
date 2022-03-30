@@ -49,7 +49,7 @@ export default function ContactMeSection() {
                   href="/Resume-EtienneLorthoy2022.pdf"
                   color="primary"
                 >
-                  See my PDF Resume
+                  PDF Resume
                 </Button>
               </CardFooter>
             </Card>

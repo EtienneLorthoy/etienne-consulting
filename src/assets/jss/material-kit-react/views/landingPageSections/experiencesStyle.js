@@ -14,7 +14,12 @@ const experiencesStyle = {
     textDecoration: "none",
   },
   description: {
+    color: "#999",
+  },
+  projectDescription: {
+    color: "#999",
     marginLeft: "12px",
+    fontSize: "12px",
     textAlign: "justify",
   },
   projectContainer: {
@@ -22,6 +27,7 @@ const experiencesStyle = {
   },
   imageDefault: {
     maxWidth: "140px",
+    marginBottom: "12px",
   },
   socialIcons: {
     position: "relative",

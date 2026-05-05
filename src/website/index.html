@@ -423,6 +423,18 @@
     }
     .eng-card p { font-size: .9rem; }
 
+    /* ─── TIMELINE GRID ──────────────────────────────────────── */
+    .eng-timeline-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      margin-top: 3rem;
+      align-items: start;
+    }
+    @media (max-width: 700px) {
+      .eng-timeline-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+    }
+
     /* ─── TIMELINE ────────────────────────────────────────────── */
     .timeline {
       position: relative;
@@ -704,12 +716,12 @@
           <strong>Solo developer of Hard Chip</strong> an 8-bit processor simulation game on Steam
         </p>
         <div class="hero-cta">
-          <a href="https://store.steampowered.com/app/2844290/Hard_Chip/" target="_blank" rel="noopener" class="btn btn-primary">
+          <a href="https://linkedin.com/in/etienne-lorthoy" target="_blank" rel="noopener" class="btn btn-primary">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14H9V8h2v8zm4 0h-2V8h2v8z"/></svg>
-            Hard Chip on Steam
+            LinkedIn
           </a>
-          <a href="https://linkedin.com/in/etienne-lorthoy" target="_blank" rel="noopener" class="btn btn-ghost">LinkedIn</a>
           <a href="https://github.com/EtienneLorthoy" target="_blank" rel="noopener" class="btn btn-ghost">GitHub</a>
+          <a href="https://store.steampowered.com/app/2844290/Hard_Chip/" target="_blank" rel="noopener" class="btn btn-ghost">Hard Chip on Steam</a>
         </div>
       </div>
     </div>
@@ -765,9 +777,18 @@
   <div class="quote-strip">
     <div class="quote-inner">
       <blockquote>
-        Solution-driven with a growth mindset a stellar teammate and one of the strongest developers I have worked with.
+        Solution-driven with a true growth mindset — a stellar teammate. Skillfully planned and led our architecture shift from monolith to microservices.
       </blockquote>
-      <cite>Peer recommendation, LinkedIn</cite>
+      <cite>David</cite>
+    </div>
+  </div>
+
+  <div class="quote-strip">
+    <div class="quote-inner">
+      <blockquote>
+        One of the best developers at GSOFT. His innovation and continuous improvement mindset, coupled with his capacity to absorb information, make him a standout.
+      </blockquote>
+      <cite>Lorent</cite>
     </div>
   </div>
 
@@ -910,7 +931,7 @@
       <p class="label">// engineering track record</p>
       <h2>Fifteen years of backend,<br>performance, and systems work.</h2>
 
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:4rem;margin-top:3rem;align-items:start">
+      <div class="eng-timeline-grid">
         <div class="timeline">
           <div class="tl-entry">
             <div class="tl-role">Solo Developer &amp; Founder</div>

@@ -1,0 +1,31 @@
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Etienne Lorthoy",
+  "url": "https://etiennelorthoy.com",
+  "jobTitle": "Full-Stack and Performance Developer",
+  "description": "Senior .NET full-stack and performance engineer in Montreal. Solo developer of Hard Chip, a 3D digital logic simulation game. Specializes in C# .NET, distributed systems, performance engineering, and real-time graphics.",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Montreal",
+    "addressRegion": "Quebec",
+    "addressCountry": "CA"
+  },
+  "sameAs": [
+    "https://linkedin.com/in/etienne-lorthoy",
+    "https://github.com/EtienneLorthoy",
+    "https://store.steampowered.com/app/2844290/Hard_Chip/",
+    "https://elort.itch.io/hardchip",
+    "https://hardchip.io"
+  ],
+  "knowsAbout": [
+    "C# .NET",
+    "HLSL",
+    "MonoGame",
+    "Distributed Systems",
+    "Microservices",
+    "Performance Engineering",
+    "Full-Stack Web Development",
+    "Game Development"
+  ]
+}

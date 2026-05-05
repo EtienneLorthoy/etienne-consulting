@@ -1,0 +1,13 @@
+# Etienne Lorthoy
+
+> Senior Full-Stack and Performance Developer in Montreal. Solo developer of Hard Chip, a 3D digital logic simulation game on Steam.
+
+- Personal/freelance site: https://etiennelorthoy.com
+- Hard Chip game: https://hardchip.io
+- Steam: https://store.steampowered.com/app/2844290/Hard_Chip/
+- GitHub: https://github.com/EtienneLorthoy
+- LinkedIn: https://linkedin.com/in/etienne-lorthoy
+
+## Details
+
+- [Full profile](https://etiennelorthoy.com/llms-full.txt)

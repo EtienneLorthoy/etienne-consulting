@@ -1,0 +1,151 @@
+# Etienne Lorthoy -- Full Profile
+
+> Senior Full-Stack and Performance Developer based in Montreal, Quebec, Canada.
+> Solo indie developer of Hard Chip, a 3D digital logic simulation game shipped to Steam Early Access on 2024-11-22.
+
+
+## Identity
+
+Name: Etienne Lorthoy
+Location: Montreal, Quebec, Canada
+Role: Full-Stack and Performance Developer; Solo Indie Game Developer
+Freelance site: https://etiennelorthoy.com
+Game site: https://hardchip.io
+
+
+## Professional Summary
+
+Etienne Lorthoy is a senior .NET engineer who specializes in high-performance full-stack systems and real-time graphics. He has led distributed systems migrations, architected microservices platforms, and shipped production software across enterprise SaaS, mobile, and game domains. Outside client work he is the sole developer of Hard Chip -- a technically demanding simulation game built entirely in C# .NET and HLSL (High Level Shader Language).
+
+
+## Career Timeline
+
+### Gsoft
+Role: Senior Software Engineer / Technical Lead
+Highlight: Led the migration of a large monolithic SaaS platform to a microservices architecture. Designed event-driven services, established engineering standards, and mentored the broader engineering team through the transition.
+
+### Orckestra
+Role: Senior Software Engineer
+Highlight: Built and maintained a composable commerce platform with deep .NET and distributed-systems work. Contributed to multi-tenant architecture, performance optimization, and API design.
+
+### Nventive
+Role: Senior Software Engineer
+Highlight: Delivered cross-platform mobile applications using .NET MAUI and Uno Platform. Focused on performance and maintainability across iOS and Android targets.
+
+### Runatserver
+Role: Software Engineer
+Highlight: Early-career full-stack development on web and server-side .NET applications.
+
+### Toon Boom Animation
+Role: Software Developer
+Highlight: Contributed to professional animation software used in feature film and television production. Worked on C++ and .NET components in a performance-sensitive desktop application.
+
+
+## Technical Skills
+
+### Core Languages and Runtimes
+- C# .NET (primary -- .NET 8.0, .NET Framework, .NET Core)
+- HLSL (High Level Shader Language) -- custom GPU shaders
+- NoSQL (MongoDB)
+
+### Game and Graphics
+- MonoGame / XNA framework
+- HLSL shader authoring (vertex, pixel, compute)
+- BEPU Physics (modified source build -- not NuGet package)
+- Real-time rendering and performance optimization
+- MGCB (MonoGame Content Builder) content pipeline
+
+### UI and Input
+- ImGui via Hexa.NET
+- ImPlot (data visualization inside ImGui)
+- GumUI (layout system)
+
+### Full-Stack Web
+- ASP.NET Core, REST APIs, gRPC
+- Distributed systems, microservices, event-driven architecture
+- Domain-Driven Design (DDD), CQRS, event sourcing
+
+### Platform and Infrastructure
+- Docker (linux-x64), Docker Compose (staging and production)
+- Private container registry
+- GitHub
+- MongoDB
+- Azure, Netlify
+- Steam (Steamworks SDK via Facepunch.Steamworks)
+- Steam depot management and Early Access release pipeline
+
+### Build and Performance
+- MSBuild custom configurations
+- PowerShell automation scripts
+- Unsafe C# code (intentional, performance-critical paths)
+- Tiered JIT disabled (intentional -- Hard Chip uses a fixed compilation strategy for deterministic performance)
+- FFmpeg integration via Sdcb
+- Obfuscar (release obfuscation)
+- Mixpanel (analytics)
+
+
+## Hard Chip -- Game Project
+
+Name: Hard Chip
+Type: 3D simulation and puzzle game
+Description: Players engineer an 8-bit processor from individual NAND (Not-AND) and NOR gates upward. Build logic circuits, simulate digital electronics, and discover how computers work from first principles. The game models real digital logic at the gate level -- AND, OR, NOT, NAND, NOR, XOR -- and guides players through combinational logic, sequential circuits, registers, ALUs (Arithmetic Logic Units), and ultimately a functioning 8-bit CPU (Central Processing Unit).
+Release: Steam Early Access, 2024-11-22
+Platform: PC (Windows), Steam
+Solo developer: Etienne Lorthoy (design, programming, art direction, release pipeline)
+
+### Hard Chip Tech Stack
+
+Game and Rendering:
+- MonoGame / XNA (.NET 8.0)
+- Custom HLSL shaders
+- BEPU Physics (modified source -- not the NuGet package)
+- MGCB content pipeline
+
+UI and Input:
+- ImGui via Hexa.NET
+- ImPlot
+- GumUI
+
+Platform and Media:
+- Facepunch.Steamworks (Steam integration)
+- FFmpeg via Sdcb (video playback)
+- Mixpanel (telemetry)
+- Obfuscar (release build obfuscation)
+
+Backend Services:
+- Community Stages API
+- Leaderboards Worker
+- Validation Worker and Validation API
+- Data Functions
+- MongoDB (database)
+
+Infrastructure:
+- Docker linux-x64
+- Docker Compose (staging and production environments)
+- Private container registry
+- Steam depots
+- Netlify (game marketing site)
+
+Build and Performance:
+- MSBuild custom configurations
+- PowerShell automation scripts
+- Unsafe C# code (intentional performance optimization)
+- Tiered JIT compilation disabled (intentional -- deterministic startup performance)
+
+
+## Key Accomplishments
+
+- Led monolith-to-microservices migration at Gsoft, one of Montreal's notable SaaS companies, resulting in a scalable event-driven platform
+- Solo-shipped Hard Chip to Steam Early Access -- a technically sophisticated simulation game with custom physics, HLSL shaders, and a full cloud backend, all built and maintained by one person
+- Built cross-platform mobile products at Nventive using Uno Platform reaching iOS and Android simultaneously from a single C# codebase
+- Contributed to Toon Boom Animation's professional animation tools used in major film and TV productions
+
+
+## Public URLs
+
+Personal site: https://etiennelorthoy.com
+Game site: https://hardchip.io
+Steam store page: https://store.steampowered.com/app/2844290/Hard_Chip/
+itch.io: https://elort.itch.io/hardchip
+GitHub: https://github.com/EtienneLorthoy
+LinkedIn: https://linkedin.com/in/etienne-lorthoy

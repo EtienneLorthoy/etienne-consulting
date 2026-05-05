@@ -1,0 +1,1048 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Etienne Lorthoy — Engineer & Indie Developer</title>
+  <meta name="description" content="Montreal-based full-stack and performance engineer. Senior .NET architect, solo developer of Hard Chip on Steam." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ─── TOKENS ─────────────────────────────────────────────── */
+    :root {
+      --bg:        #080e0b;
+      --bg-card:   #0e1712;
+      --bg-raised: #141f18;
+      --green:     #00e57a;
+      --green-dim: #00b85f;
+      --cyan:      #00d4c8;
+      --text:      #d6ffe8;
+      --text-mute: #6b9278;
+      --border:    #1a2e20;
+      --border-hi: #284033;
+      --mono:      'JetBrains Mono', 'Fira Code', monospace;
+      --sans:      'Inter', system-ui, sans-serif;
+      --radius:    6px;
+      --gutter:    clamp(1.25rem, 5vw, 4rem);
+    }
+
+    /* ─── RESET ───────────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--sans);
+      font-size: 1rem;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+    a { color: var(--green); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    img { display: block; max-width: 100%; }
+
+    /* ─── SCROLLBAR ───────────────────────────────────────────── */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: var(--bg); }
+    ::-webkit-scrollbar-thumb { background: var(--border-hi); border-radius: 3px; }
+
+    /* ─── LAYOUT HELPERS ──────────────────────────────────────── */
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 var(--gutter);
+    }
+    .section {
+      padding: clamp(4rem, 10vw, 7rem) 0;
+    }
+    .section + .section {
+      border-top: 1px solid var(--border);
+    }
+    .label {
+      font-family: var(--mono);
+      font-size: .75rem;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--green);
+      margin-bottom: .75rem;
+    }
+    h1, h2, h3 {
+      line-height: 1.2;
+      font-weight: 700;
+    }
+    h2 {
+      font-size: clamp(1.75rem, 4vw, 2.5rem);
+      margin-bottom: 1.25rem;
+    }
+    h3 {
+      font-size: 1.15rem;
+      margin-bottom: .5rem;
+    }
+    p { margin-bottom: 1rem; color: #aacdb5; }
+    p:last-child { margin-bottom: 0; }
+
+    /* ─── CIRCUIT CANVAS (hero background) ───────────────────── */
+    #circuit-canvas {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      opacity: .18;
+      pointer-events: none;
+    }
+
+    /* ─── NAV ─────────────────────────────────────────────────── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: rgba(8, 14, 11, .85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 56px;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 var(--gutter);
+    }
+    .nav-logo {
+      font-family: var(--mono);
+      font-size: .9rem;
+      color: var(--green);
+      letter-spacing: .05em;
+    }
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+    .nav-links a {
+      font-size: .85rem;
+      color: var(--text-mute);
+      transition: color .2s;
+    }
+    .nav-links a:hover {
+      color: var(--green);
+      text-decoration: none;
+    }
+    @media (max-width: 600px) {
+      .nav-links { gap: 1rem; }
+      .nav-links li:nth-child(n+4) { display: none; }
+    }
+
+    /* ─── HERO ────────────────────────────────────────────────── */
+    #hero {
+      position: relative;
+      min-height: 100svh;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+      padding-top: 56px;
+    }
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 760px;
+    }
+    .hero-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      font-family: var(--mono);
+      font-size: .75rem;
+      color: var(--green);
+      border: 1px solid var(--green-dim);
+      border-radius: 2em;
+      padding: .3rem .9rem;
+      margin-bottom: 2rem;
+      letter-spacing: .08em;
+    }
+    .hero-tag::before {
+      content: '';
+      display: block;
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--green);
+      animation: blink 1.8s ease-in-out infinite;
+    }
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50%       { opacity: .2; }
+    }
+    .hero-name {
+      font-size: clamp(2.8rem, 8vw, 5.5rem);
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: .5rem;
+      letter-spacing: -.02em;
+    }
+    .hero-name span { color: var(--green); }
+    .hero-sub {
+      font-family: var(--mono);
+      font-size: clamp(.9rem, 2vw, 1.05rem);
+      color: var(--text-mute);
+      margin-bottom: 2.5rem;
+      line-height: 1.6;
+    }
+    .hero-sub strong { color: var(--cyan); font-weight: 500; }
+    .hero-cta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      padding: .7rem 1.5rem;
+      border-radius: var(--radius);
+      font-size: .9rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all .2s;
+      white-space: nowrap;
+    }
+    .btn-primary {
+      background: var(--green);
+      color: #040a06;
+    }
+    .btn-primary:hover {
+      background: #33ff96;
+      text-decoration: none;
+      transform: translateY(-1px);
+      box-shadow: 0 0 20px rgba(0, 229, 122, .35);
+    }
+    .btn-ghost {
+      background: transparent;
+      color: var(--text);
+      border: 1px solid var(--border-hi);
+    }
+    .btn-ghost:hover {
+      border-color: var(--green);
+      color: var(--green);
+      text-decoration: none;
+    }
+
+    /* ─── HARD CHIP SECTION ───────────────────────────────────── */
+    #hardchip {
+      background: radial-gradient(ellipse at top right, #091a12 0%, var(--bg) 65%);
+    }
+    .hc-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+    @media (max-width: 700px) {
+      .hc-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+    }
+    .hc-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: .4rem;
+      background: rgba(0, 229, 122, .07);
+      border: 1px solid rgba(0, 229, 122, .25);
+      border-radius: var(--radius);
+      padding: .25rem .75rem;
+      font-family: var(--mono);
+      font-size: .72rem;
+      color: var(--green);
+      letter-spacing: .08em;
+      margin-bottom: 1.25rem;
+    }
+    .hc-visual {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      overflow: hidden;
+      position: relative;
+    }
+    .hc-screen {
+      padding: 2rem;
+      font-family: var(--mono);
+      font-size: .78rem;
+      color: var(--green);
+      line-height: 1.8;
+      min-height: 280px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .hc-screen .comment { color: var(--text-mute); }
+    .hc-screen .kw { color: var(--cyan); }
+    .hc-screen .str { color: #ffd080; }
+    .hc-screen .cursor {
+      display: inline-block;
+      width: 2px;
+      height: 1em;
+      background: var(--green);
+      vertical-align: text-bottom;
+      animation: blink .9s step-end infinite;
+    }
+    .hc-footer-bar {
+      background: #0a1510;
+      border-top: 1px solid var(--border);
+      padding: .6rem 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .hc-footer-bar span {
+      font-family: var(--mono);
+      font-size: .7rem;
+      color: var(--text-mute);
+    }
+    .hc-pill {
+      background: rgba(0,229,122,.12);
+      color: var(--green);
+      border-radius: 2em;
+      padding: .15rem .6rem;
+      font-size: .65rem;
+    }
+    .hc-links {
+      display: flex;
+      gap: 1rem;
+      margin-top: 2rem;
+      flex-wrap: wrap;
+    }
+
+    /* ─── ENGINEERING SECTION ─────────────────────────────────── */
+    .eng-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+    @media (max-width: 700px) {
+      .eng-grid { grid-template-columns: 1fr; }
+    }
+    .eng-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1.75rem;
+      transition: border-color .2s;
+    }
+    .eng-card:hover {
+      border-color: var(--border-hi);
+    }
+    .eng-icon {
+      font-size: 1.5rem;
+      margin-bottom: .75rem;
+    }
+    .eng-card p { font-size: .9rem; }
+
+    /* ─── TIMELINE ────────────────────────────────────────────── */
+    .timeline {
+      position: relative;
+      padding-left: 1.75rem;
+    }
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 0; top: .4rem; bottom: .4rem;
+      width: 1px;
+      background: var(--border-hi);
+    }
+    .tl-entry {
+      position: relative;
+      margin-bottom: 2rem;
+    }
+    .tl-entry::before {
+      content: '';
+      position: absolute;
+      left: -1.75rem;
+      top: .55rem;
+      width: 7px; height: 7px;
+      border-radius: 50%;
+      background: var(--green-dim);
+      border: 1px solid var(--bg);
+    }
+    .tl-role {
+      font-weight: 600;
+      color: var(--text);
+      font-size: .95rem;
+    }
+    .tl-org {
+      font-family: var(--mono);
+      font-size: .78rem;
+      color: var(--green);
+    }
+    .tl-desc {
+      margin-top: .35rem;
+      font-size: .88rem;
+      color: #8cb09a;
+    }
+
+    /* ─── SKILLS ──────────────────────────────────────────────── */
+    .skills-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .6rem;
+      margin-top: 2rem;
+    }
+    .skill-chip {
+      font-family: var(--mono);
+      font-size: .75rem;
+      color: var(--cyan);
+      background: rgba(0, 212, 200, .07);
+      border: 1px solid rgba(0, 212, 200, .2);
+      border-radius: 4px;
+      padding: .3rem .75rem;
+      letter-spacing: .04em;
+    }
+
+    /* ─── TECH STACK LAYERS ──────────────────────────────────── */
+    .hc-scale-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2.5rem;
+      margin-bottom: 2.5rem;
+    }
+    .hc-stat {
+      display: flex;
+      flex-direction: column;
+      gap: .15rem;
+    }
+    .hc-stat-num {
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: var(--green);
+      font-family: var(--mono);
+      line-height: 1;
+    }
+    .hc-stat-label {
+      font-size: .75rem;
+      color: var(--text-mute);
+    }
+    .hc-stack-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+      gap: 1.25rem;
+    }
+    .hc-stack-layer {
+      background: var(--bg-raised);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1.25rem 1.5rem;
+      transition: border-color .2s;
+    }
+    .hc-stack-layer:hover {
+      border-color: var(--border-hi);
+    }
+    .hc-stack-cat {
+      font-family: var(--mono);
+      font-size: .68rem;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--green);
+      margin-bottom: .75rem;
+    }
+    .hc-stack-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .4rem;
+    }
+    .hc-stack-chips span {
+      font-family: var(--mono);
+      font-size: .72rem;
+      color: var(--text);
+      background: rgba(255,255,255,.04);
+      border: 1px solid var(--border-hi);
+      border-radius: 3px;
+      padding: .2rem .55rem;
+    }
+    .hc-stack-note {
+      margin-top: .65rem;
+      font-size: .68rem;
+      color: var(--text-mute);
+      font-family: var(--mono);
+      font-style: italic;
+    }
+
+    /* ─── PROJECT IMAGE PLACEHOLDERS ─────────────────────────── */
+    .proj-screenshots {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+    .proj-img-placeholder {
+      aspect-ratio: 16/9;
+      background: var(--bg-raised);
+      border: 1px dashed var(--border-hi);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--mono);
+      font-size: .72rem;
+      color: var(--text-mute);
+      letter-spacing: .06em;
+    }
+
+    /* ─── CONNECT SECTION ─────────────────────────────────────── */
+    .links-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 1rem;
+      margin-top: 2.5rem;
+    }
+    .link-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1.25rem 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: .3rem;
+      transition: border-color .2s, transform .15s;
+      text-decoration: none;
+    }
+    .link-card:hover {
+      border-color: var(--green);
+      transform: translateY(-2px);
+      text-decoration: none;
+    }
+    .link-card-icon {
+      font-size: 1.3rem;
+      margin-bottom: .2rem;
+    }
+    .link-card-title {
+      font-weight: 600;
+      font-size: .9rem;
+      color: var(--text);
+    }
+    .link-card-sub {
+      font-family: var(--mono);
+      font-size: .72rem;
+      color: var(--text-mute);
+    }
+
+    /* ─── QUOTE STRIP ─────────────────────────────────────────── */
+    .quote-strip {
+      background: var(--bg-raised);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 3rem 0;
+    }
+    .quote-inner {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 var(--gutter);
+      text-align: center;
+    }
+    blockquote {
+      font-size: clamp(1rem, 2.5vw, 1.2rem);
+      color: #aacdb5;
+      font-style: italic;
+      line-height: 1.75;
+    }
+    blockquote::before { content: '\201C'; color: var(--green); font-size: 2em; line-height: 0; vertical-align: -.35em; margin-right: .1em; }
+    blockquote::after  { content: '\201D'; color: var(--green); font-size: 2em; line-height: 0; vertical-align: -.35em; margin-left: .1em; }
+    cite {
+      display: block;
+      margin-top: 1rem;
+      font-family: var(--mono);
+      font-size: .75rem;
+      color: var(--text-mute);
+      font-style: normal;
+    }
+
+    /* ─── FOOTER ──────────────────────────────────────────────── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 2.5rem 0;
+    }
+    .footer-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 var(--gutter);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .footer-logo {
+      font-family: var(--mono);
+      font-size: .85rem;
+      color: var(--green);
+    }
+    .footer-note {
+      font-size: .8rem;
+      color: var(--text-mute);
+    }
+    .footer-links {
+      display: flex;
+      gap: 1.5rem;
+      list-style: none;
+    }
+    .footer-links a {
+      font-size: .8rem;
+      color: var(--text-mute);
+    }
+    .footer-links a:hover { color: var(--green); }
+  </style>
+</head>
+
+<body>
+
+  <!-- ─── NAV ─────────────────────────────────────────────────── -->
+  <nav aria-label="Main navigation">
+    <div class="nav-inner">
+      <span class="nav-logo">etiennelorthoy<span style="color:var(--text-mute)">.</span><span style="color:var(--cyan)">com</span></span>
+      <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#hardchip">Hard Chip</a></li>
+        <li><a href="#engineering">Engineering</a></li>
+        <li><a href="#connect">Connect</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- ─── HERO ─────────────────────────────────────────────────── -->
+  <section id="hero">
+    <canvas id="circuit-canvas" aria-hidden="true"></canvas>
+    <div class="container">
+      <div class="hero-content">
+        <div class="hero-tag">Montreal, QC &mdash; Open to freelance</div>
+        <h1 class="hero-name">Etienne<br><span>Lorthoy</span></h1>
+        <p class="hero-sub">
+          Full-Stack &amp; Performance Engineer<br>
+          <strong>Solo developer of Hard Chip</strong> &mdash; an 8-bit processor simulation game on Steam
+        </p>
+        <div class="hero-cta">
+          <a href="https://store.steampowered.com/app/2844290/Hard_Chip/" target="_blank" rel="noopener" class="btn btn-primary">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14H9V8h2v8zm4 0h-2V8h2v8z"/></svg>
+            Hard Chip on Steam
+          </a>
+          <a href="https://linkedin.com/in/etienne-lorthoy" target="_blank" rel="noopener" class="btn btn-ghost">LinkedIn</a>
+          <a href="https://github.com/EtienneLorthoy" target="_blank" rel="noopener" class="btn btn-ghost">GitHub</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── ABOUT ────────────────────────────────────────────────── -->
+  <section id="about" class="section">
+    <div class="container">
+      <p class="label">// about</p>
+      <h2>Senior engineer.<br>Indie creator. Freelancer.</h2>
+      <div style="max-width:680px">
+        <p>
+          I'm a Montreal-based developer with fifteen years of professional engineering experience. I've
+          worked at companies like Toon Boom Animation, Nventive, Orckestra, and Gsoft &mdash; leading architectural
+          initiatives like a full monolith-to-microservices migration &mdash; and I now split my time between
+          my indie game <strong style="color:var(--green)">Hard Chip</strong> and freelance consulting
+          on backend modernization and IT infrastructure.
+        </p>
+        <p>
+          I work primarily in <strong style="color:var(--cyan)">C# / .NET</strong> and
+          <strong style="color:var(--cyan)">HLSL (High Level Shader Language)</strong>, combining
+          distributed systems experience with real-time graphics and simulation work.
+          That mix is rare, and it's what made building Hard Chip possible as a solo creator.
+        </p>
+      </div>
+
+      <div class="eng-grid" style="margin-top:3rem">
+        <div class="eng-card">
+          <div class="eng-icon">&#9651;</div>
+          <h3>Architectural Leadership</h3>
+          <p>Planned and led a monolith to microservices transition at Gsoft, establishing a foundation the team continued building on for years.</p>
+        </div>
+        <div class="eng-card">
+          <div class="eng-icon">&#9670;</div>
+          <h3>Solo Product Shipper</h3>
+          <p>Designed, built, and launched Hard Chip as a one-person studio: game engine, digital logic simulation, HLSL (High Level Shader Language) rendering, five backend microservices, Docker infrastructure, Steam and itch.io distribution &mdash; all of it.</p>
+        </div>
+        <div class="eng-card">
+          <div class="eng-icon">&#9642;</div>
+          <h3>Performance Engineering</h3>
+          <p>Deep experience profiling and tuning .NET systems under production load, and HLSL shader pipelines in real-time rendering contexts.</p>
+        </div>
+        <div class="eng-card">
+          <div class="eng-icon">&#9671;</div>
+          <h3>Independent Consulting</h3>
+          <p>Available for freelance engagements focused on modernizing legacy code and IT infrastructure. Based in Montreal, working remotely.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── QUOTE STRIP ────────────────────────────────────────────── -->
+  <div class="quote-strip">
+    <div class="quote-inner">
+      <blockquote>
+        Solution-driven with a growth mindset &mdash; a stellar teammate and one of the strongest developers I have worked with.
+      </blockquote>
+      <cite>&mdash; Peer recommendation, LinkedIn</cite>
+    </div>
+  </div>
+
+  <!-- ─── HARD CHIP ─────────────────────────────────────────────── -->
+  <section id="hardchip" class="section">
+    <div class="container">
+      <div class="hc-grid">
+        <div>
+          <p class="label">// current project</p>
+          <div class="hc-badge">
+            <svg width="10" height="10" viewBox="0 0 10 10" fill="currentColor"><circle cx="5" cy="5" r="5"/></svg>
+            Live on Steam &mdash; Early Access
+          </div>
+          <h2>Hard Chip</h2>
+          <p>
+            A 3D simulation and puzzle game about engineering an 8-bit processor from the ground up &mdash;
+            starting from individual NAND (Not-AND) and NOR (Not-OR) gates, building toward registers,
+            ALUs (Arithmetic Logic Units), and a working CPU (Central Processing Unit). No abstraction hand-holding.
+          </p>
+          <p>
+            Technically uncompromising: real digital logic simulation, custom 3D rendering with HLSL shaders,
+            and a full UI (User Interface) layer &mdash; all shipped solo. It's a love letter to computer architecture
+            and the kind of game only an engineer would make.
+          </p>
+          <div class="hc-links">
+            <a href="https://store.steampowered.com/app/2844290/Hard_Chip/" target="_blank" rel="noopener" class="btn btn-primary">
+              Play on Steam
+            </a>
+            <a href="https://hardchip.io" target="_blank" rel="noopener" class="btn btn-ghost">
+              hardchip.io
+            </a>
+          </div>
+        </div>
+
+        <div class="hc-visual" style="margin-top:2.5rem">
+          <div class="hc-screen" >
+            <p class="label">// screenshots</p>
+            <div class="proj-screenshots">
+              <div class="proj-img-placeholder">[ image ]</div>
+              <div class="proj-img-placeholder">[ image ]</div>
+              <div class="proj-img-placeholder">[ image ]</div>
+            </div>
+          </div><!-- hc-screen -->
+        </div><!-- hc-visual -->
+
+      <!-- ─── TECH STACK ──────────────────────────────────────── -->
+      <div style="margin-top:4rem;padding-top:3rem;border-top:1px solid var(--border);grid-column:1 / -1">
+        <p class="label">// built with &mdash; the full stack</p>
+        <p style="max-width:700px;margin-bottom:2rem">
+          Hard Chip is a solo project that is not small by any measure. A 25-project solution, five backend microservices deployed as Docker containers on Linux, a custom build and packaging pipeline, and every layer implemented by one person.
+        </p>
+
+        <div class="hc-scale-row">
+          <div class="hc-stat"><span class="hc-stat-num">25+</span><span class="hc-stat-label">projects in solution</span></div>
+          <div class="hc-stat"><span class="hc-stat-num">5</span><span class="hc-stat-label">backend microservices</span></div>
+          <div class="hc-stat"><span class="hc-stat-num">3</span><span class="hc-stat-label">build configurations</span></div>
+          <div class="hc-stat"><span class="hc-stat-num">1</span><span class="hc-stat-label">developer</span></div>
+        </div>
+
+        <div class="hc-stack-grid">
+          <div class="hc-stack-layer">
+            <div class="hc-stack-cat">Game &amp; Rendering</div>
+            <div class="hc-stack-chips">
+              <span>MonoGame / XNA</span>
+              <span>.NET 8.0</span>
+              <span>HLSL Shaders</span>
+              <span>BEPU Physics</span>
+              <span>MGCB Pipeline</span>
+            </div>
+            <div class="hc-stack-note">BEPU Physics built from modified source &mdash; not the NuGet package</div>
+          </div>
+
+          <div class="hc-stack-layer">
+            <div class="hc-stack-cat">UI &amp; Input</div>
+            <div class="hc-stack-chips">
+              <span>ImGui (Hexa.NET)</span>
+              <span>ImPlot</span>
+              <span>GumUI</span>
+              <span>pure HTML + JS</span>
+            </div>
+            <div class="hc-stack-note">Immediate-mode UI for in-game layout</div>
+          </div>
+
+          <div class="hc-stack-layer">
+            <div class="hc-stack-cat">Platform &amp; Media</div>
+            <div class="hc-stack-chips">
+              <span>Facepunch.Steamworks</span>
+              <span>FFmpeg (Sdcb)</span>
+              <span>Obfuscar</span>
+            </div>
+            <div class="hc-stack-note">Code obfuscated on Release publish for IP (Intellectual Property) protection</div>
+          </div>
+
+          <div class="hc-stack-layer">
+            <div class="hc-stack-cat">Backend Services</div>
+            <div class="hc-stack-chips">
+              <span>Community Stages API</span>
+              <span>Leaderboards Worker</span>
+              <span>Validation Worker</span>
+              <span>Validation API</span>
+              <span>Data Functions</span>
+              <span>MongoDB</span>
+            </div>
+          </div>
+
+          <div class="hc-stack-layer">
+            <div class="hc-stack-cat">Infrastructure</div>
+            <div class="hc-stack-chips">
+              <span>Docker (linux-x64)</span>
+              <span>Compose staging/prod</span>
+              <span>Private Registry</span>
+              <span>Portainer</span>
+              <span>Steam Depots</span>
+              <span>Netlify</span>
+              <span>Bucket S3</span>
+              <span>MongoDB Atlas</span>
+            </div>
+          </div>
+
+          <div class="hc-stack-layer">
+            <div class="hc-stack-cat">Build &amp; Performance</div>
+            <div class="hc-stack-chips">
+              <span>MSBuild (custom configs)</span>
+              <span>GitHub</span>
+              <span>PowerShell scripts</span>
+              <span>unsafe code</span>
+              <span>tiered JIT disabled, self packaged</span>
+              <span>Debug / Release / Server</span>
+            </div>
+            <div class="hc-stack-note">Unsafe code and disabled tiered compilation are intentional perf settings</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── ENGINEERING ───────────────────────────────────────────── -->
+  <section id="engineering" class="section">
+    <div class="container">
+      <p class="label">// engineering track record</p>
+      <h2>Fifteen years of backend,<br>performance, and systems work.</h2>
+
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:4rem;margin-top:3rem;align-items:start">
+        <div class="timeline">
+          <div class="tl-entry">
+            <div class="tl-role">Solo Developer &amp; Founder</div>
+            <div class="tl-org">Hard Chip (Elorth) &mdash; Current</div>
+            <div class="tl-desc">Designed and shipped a technically demanding 3D logic simulation game to Steam Early Access. Full-stack ownership across engine, UX, and distribution.</div>
+          </div>
+          <div class="tl-entry">
+            <div class="tl-role">Full-Stack &amp; Performance Developer</div>
+            <div class="tl-org">Gsoft Inc.</div>
+            <div class="tl-desc">Led the research, planning, and execution of a monolith-to-microservices architecture migration.</div>
+          </div>
+          <div class="tl-entry">
+            <div class="tl-role">Developer</div>
+            <div class="tl-org">Orckestra Inc.</div>
+            <div class="tl-desc">Full-stack .NET engineering in a distributed commerce platform context.</div>
+          </div>
+          <div class="tl-entry">
+            <div class="tl-role">Developer</div>
+            <div class="tl-org">Nventive</div>
+            <div class="tl-desc">Cross-platform mobile and web development in a high-output consulting environment.</div>
+          </div>
+          <div class="tl-entry">
+            <div class="tl-role">Developer</div>
+            <div class="tl-org">Toon Boom Animation Inc.</div>
+            <div class="tl-desc">Engineering tools used in professional animation production. Early roots in graphics-adjacent domains.</div>
+          </div>
+          <div class="tl-entry">
+            <div class="tl-role">Developer</div>
+            <div class="tl-org">Runatserver</div>
+          </div>
+          <div class="tl-entry">
+            <div class="tl-role">Developer</div>
+            <div class="tl-org">Altima</div>
+          </div>
+          <div class="tl-entry">
+            <div class="tl-role">Developer</div>
+            <div class="tl-org">3DDuo</div>
+          </div>
+        </div>
+
+        <div>
+          <h3 style="color:var(--text);margin-bottom:1.5rem">Education</h3>
+          <div class="eng-card" style="margin-bottom:2rem">
+            <div class="tl-org">Supinfo International University</div>
+            <div style="font-size:.85rem;color:#8cb09a;margin-top:.25rem">Ecole Superieure d'Informatique de Paris</div>
+            <div style="font-size:.8rem;color:var(--text-mute);font-family:var(--mono);margin-top:.4rem">2006 &ndash; 2011 &middot; Computer Science</div>
+          </div>
+
+          <h3 style="color:var(--text);margin-bottom:.5rem">Core technologies</h3>
+          <div class="skills-grid">
+            <span class="skill-chip">C# / .NET 8</span>
+            <span class="skill-chip">HLSL Shaders</span>
+            <span class="skill-chip">MonoGame / XNA</span>
+            <span class="skill-chip">BEPU Physics</span>
+            <span class="skill-chip">ImGui</span>
+            <span class="skill-chip">Digital Logic Simulation</span>
+            <span class="skill-chip">Real-time 3D</span>
+            <span class="skill-chip">Performance Engineering</span>
+            <span class="skill-chip">Microservices</span>
+            <span class="skill-chip">Distributed Systems</span>
+            <span class="skill-chip">Docker / Linux</span>
+            <span class="skill-chip">MongoDB</span>
+            <span class="skill-chip">Steam SDK</span>
+            <span class="skill-chip">FFmpeg</span>
+            <span class="skill-chip">MSBuild / CI</span>
+            <span class="skill-chip">Architecture</span>
+            <span class="skill-chip">Full-stack Web</span>
+            <span class="skill-chip">IT Infrastructure</span>
+            <span class="skill-chip">AI-assisted Development</span>
+            <span class="skill-chip">Agentic Workflows</span>
+            <span class="skill-chip">Claude / LLM Integration</span>
+          </div>
+
+          <div style="margin-top:2.5rem">
+            <a href="https://etiennelorthoy.com/assets/Resume-EtienneLorthoy2022.pdf" target="_blank" rel="noopener" class="btn btn-ghost" style="font-size:.85rem">
+              Download Resume (PDF) &rarr;
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── CONNECT ───────────────────────────────────────────────── -->
+  <section id="connect" class="section">
+    <div class="container">
+      <p class="label">// connect</p>
+      <h2>Find me online.</h2>
+      <p style="max-width:520px">Freelance inquiries, collaborations, or just a conversation about logic gates and .NET performance &mdash; I'm reachable through any of these.</p>
+
+      <div class="links-grid">
+        <a href="https://linkedin.com/in/etienne-lorthoy" target="_blank" rel="noopener" class="link-card">
+          <div class="link-card-icon">&#128101;</div>
+          <div class="link-card-title">LinkedIn</div>
+          <div class="link-card-sub">in/etienne-lorthoy</div>
+        </a>
+        <a href="https://github.com/EtienneLorthoy" target="_blank" rel="noopener" class="link-card">
+          <div class="link-card-icon">&#128025;</div>
+          <div class="link-card-title">GitHub</div>
+          <div class="link-card-sub">EtienneLorthoy</div>
+        </a>
+        <a href="https://store.steampowered.com/app/2844290/Hard_Chip/" target="_blank" rel="noopener" class="link-card">
+          <div class="link-card-icon">&#127918;</div>
+          <div class="link-card-title">Hard Chip &mdash; Steam</div>
+          <div class="link-card-sub">store.steampowered.com</div>
+        </a>
+        <a href="https://elort.itch.io/hardchip" target="_blank" rel="noopener" class="link-card">
+          <div class="link-card-icon">&#9679;</div>
+          <div class="link-card-title">Hard Chip &mdash; itch.io</div>
+          <div class="link-card-sub">elort.itch.io</div>
+        </a>
+        <a href="https://hardchip.io" target="_blank" rel="noopener" class="link-card">
+          <div class="link-card-icon">&#9670;</div>
+          <div class="link-card-title">hardchip.io</div>
+          <div class="link-card-sub">Official game site</div>
+        </a>
+        <a href="https://podcast.ausha.co/could-be-better/3-etre-solo-dev-could-be-better-podcast" target="_blank" rel="noopener" class="link-card">
+          <div class="link-card-icon">&#127911;</div>
+          <div class="link-card-title">Podcast Guest</div>
+          <div class="link-card-sub">Could Be Better, ep. 3</div>
+        </a>
+        <a href="https://www.youtube.com/watch?v=vTGBH6asc3Q" target="_blank" rel="noopener" class="link-card">
+          <div class="link-card-icon">&#127909;</div>
+          <div class="link-card-title">Podcast Guest</div>
+          <div class="link-card-sub">Mon Expansion</div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- footer -->
+  <footer>
+    <div class="footer-inner">
+      <span class="footer-logo">Etienne Lorthoy</span>
+      <ul class="footer-links">
+        <li><a href="https://hardchip.io" target="_blank" rel="noopener">Hard Chip</a></li>
+        <li><a href="https://linkedin.com/in/etienne-lorthoy" target="_blank" rel="noopener">LinkedIn</a></li>
+      </ul>
+      <span class="footer-note">Montreal, QC &mdash; 2026</span>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      const canvas = document.getElementById('circuit-canvas');
+      const ctx = canvas.getContext('2d');
+      const GREEN = '#00e57a';
+      const CYAN  = '#00d4c8';
+      let nodes = [], traces = [], W, H;
+      function resize() {
+        W = canvas.width  = window.innerWidth;
+        H = canvas.height = window.innerHeight;
+        init();
+      }
+      function randInt(a, b) { return Math.floor(Math.random() * (b - a)) + a; }
+      function init() {
+        nodes = []; traces = [];
+        const cols = Math.ceil(W / 80);
+        const rows = Math.ceil(H / 80);
+        for (let r = 0; r <= rows; r++)
+          for (let c = 0; c <= cols; c++)
+            nodes.push({ x: c*80+randInt(-10,10), y: r*80+randInt(-10,10) });
+        const count = Math.min(nodes.length * 1.5, 220);
+        for (let i = 0; i < count; i++) {
+          const a = nodes[randInt(0,nodes.length)];
+          const b = nodes[randInt(0,nodes.length)];
+          if (a === b) continue;
+          const color = Math.random() > .85 ? CYAN : GREEN;
+          traces.push({ ax:a.x, ay:a.y, bx:b.x, by:b.y, color,
+            alpha: Math.random()*.5+.1, speed: Math.random()*.004+.001,
+            t: Math.random(), dir: Math.random()>.5?1:-1 });
+        }
+      }
+      let raf;
+      function draw() {
+        ctx.clearRect(0,0,W,H);
+        for (const tr of traces) {
+          tr.t += tr.speed * tr.dir;
+          if (tr.t>1||tr.t<0) tr.dir*=-1;
+          const mid = tr.t;
+          const cx = tr.ax + (tr.bx-tr.ax)*mid;
+          ctx.beginPath();
+          ctx.moveTo(tr.ax,tr.ay);
+          ctx.lineTo(cx,tr.ay);
+          ctx.lineTo(cx,tr.by);
+          ctx.lineTo(tr.bx,tr.by);
+          ctx.strokeStyle = tr.color;
+          ctx.globalAlpha = tr.alpha;
+          ctx.lineWidth = .8;
+          ctx.stroke();
+          ctx.beginPath();
+          ctx.arc(cx, tr.ay+(tr.by-tr.ay)*mid, 2, 0, Math.PI*2);
+          ctx.fillStyle = tr.color;
+          ctx.globalAlpha = tr.alpha*2;
+          ctx.fill();
+        }
+        ctx.globalAlpha = 1;
+        raf = requestAnimationFrame(draw);
+      }
+      window.addEventListener('resize', () => { cancelAnimationFrame(raf); resize(); draw(); });
+      resize(); draw();
+    })();
+  </script>
+
+  <script>
+    const sections = document.querySelectorAll('section[id]');
+    const links    = document.querySelectorAll('nav a[href^="#"]');
+    const observer = new IntersectionObserver(entries => {
+      for (const e of entries) {
+        if (!e.isIntersecting) continue;
+        links.forEach(l => {
+          l.style.color = l.getAttribute('href') === '#' + e.target.id ? 'var(--green)' : '';
+        });
+      }
+    }, { rootMargin: '-40% 0px -55% 0px' });
+    sections.forEach(s => observer.observe(s));
+  </script>
+
+</body>
+</html>

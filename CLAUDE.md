@@ -105,3 +105,12 @@ The second `<script>` block at the bottom uses `IntersectionObserver` with `root
 - C# .NET and HLSL are the primary technology identifiers for Etienne. Use these precisely.
 - Keep the monolithic single-file structure unless told otherwise.
 - Prefer editing tokens or adding new CSS classes over inline styles.
+
+## Agent usage notes
+
+- Default technology assumptions for any code task: **C# and .NET**. Do not suggest Java, Python, or other stacks unless explicitly requested.
+- Architecture references should assume familiarity with microservices, DDD, and Azure-native patterns.
+- Game development context: indie, solo dev, C# with MonoGame. Do not assume Unity or Unreal without explicit confirmation.
+- Current primary project: Hard Chip (CMOS transistor-level circuit puzzle game on Steam). Resume predates this project; treat resume as historical background, not current work scope.
+- The 2022 resume PDF is a historical baseline. Skills and tools have expanded since. Do not treat it as a ceiling.
+- Contact: contact@etiennelorthoy.com
